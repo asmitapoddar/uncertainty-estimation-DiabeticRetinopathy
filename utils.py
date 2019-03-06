@@ -281,7 +281,6 @@ def load_model(model_file, cuda):
     #    count+=1
 
 
-
     #for (name, layer) in checkpoint.items():
         #iteration over outer layers
     #    print((name, layer))
@@ -298,8 +297,6 @@ def load_model(model_file, cuda):
     #return model_ft
     return my_model_kvpair
     '''
-
-
 
     model_ft = models.resnet18()
     model_ft.fc = torch.nn.Linear(model_ft.fc.in_features, 5)
@@ -394,89 +391,3 @@ def predict_proba(dataloader, net, ensembles=1, n_classes=10, return_logits=Fals
         logits = logits.transpose(1, 0, 2)
         return proba, np.array(labels), logits, np.array(dataloader.dataset.imgs)
     return proba, np.array(labels), np.array(dataloader.dataset.imgs)
-
-
-class CIFAR(torchvision.datasets.CIFAR10):
-    """`CIFAR10 <https://www.cs.toronto.edu/~kriz/cifar.html>`_ Dataset with several classes.
-    Args:
-        root (string): Root directory of dataset where directory
-            ``cifar-10-batches-py`` exists.
-        train (bool, optional): If True, creates dataset from training set, otherwise
-            creates from test set.
-        transform (callable, optional): A function/transform that  takes in an PIL image
-            and returns a transformed version. E.g, ``transforms.RandomCrop``
-        target_transform (callable, optional): A function/transform that takes in the
-            target and transforms it.
-        download (bool, optional): If true, downloads the dataset from the internet and
-            puts it in root directory. If dataset is already downloaded, it is not
-            downloaded again.
-    """
-    def __init__(self, root, train=True,
-                 transform=None, target_transform=None,
-                 download=False, classes=None, random_labeling=False):
-
-        if classes is None:
-            classes = np.arange(10).tolist()
-
-        self.classes = classes[:]
-
-        self.root = os.path.expanduser(root)
-        self.transform = transform
-        self.target_transform = target_transform
-        self.train = train  # training set or test set
-        self.random_labeling = random_labeling
-
-        if download:
-            self.download()
-
-        if not self._check_integrity():
-            raise RuntimeError('Dataset not found or corrupted.' +
-                               ' You can use download=True to download it')
-
-        # now load the picked numpy arrays
-        if self.train:
-            self.train_data = []
-            self.train_labels = []
-            for fentry in self.train_list:
-                f = fentry[0]
-                file = os.path.join(self.root, self.base_folder, f)
-                fo = open(file, 'rb')
-                if sys.version_info[0] == 2:
-                    entry = pickle.load(fo)
-                else:
-                    entry = pickle.load(fo, encoding='latin1')
-                self.train_data.append(entry['data'])
-                if 'labels' in entry:
-                    self.train_labels += entry['labels']
-                else:
-                    self.train_labels += entry['fine_labels']
-                fo.close()
-
-            mask = np.isin(self.train_labels, classes)
-            self.train_labels = [classes.index(l) for l, cond in zip(self.train_labels, mask) if cond]
-            if self.random_labeling:
-                self.train_labels = np.random.permutation(self.train_labels)
-
-            self.train_data = np.concatenate(self.train_data)
-            self.train_data = self.train_data.reshape((50000, 3, 32, 32))[mask]
-            self.train_data = self.train_data.transpose((0, 2, 3, 1))
-        else:
-            f = self.test_list[0][0]
-            file = os.path.join(self.root, self.base_folder, f)
-            fo = open(file, 'rb')
-            if sys.version_info[0] == 2:
-                entry = pickle.load(fo)
-            else:
-                entry = pickle.load(fo, encoding='latin1')
-            self.test_data = entry['data']
-            if 'labels' in entry:
-                self.test_labels = entry['labels']
-            else:
-                self.test_labels = entry['fine_labels']
-            fo.close()
-
-            mask = np.isin(self.test_labels, classes)
-            self.test_labels = [classes.index(l) for l, cond in zip(self.test_labels, mask) if cond]
-
-            self.test_data = self.test_data.reshape((10000, 3, 32, 32))[mask]
-            self.test_data = self.test_data.transpose((0, 2, 3, 1))  # convert to HWC
