@@ -20,11 +20,11 @@ Python 3.7
  4 - Proliferative DR
  
  ## Pipeline
- - Training [train.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/train.py): We trained a ResNet-18 Convolutional Neural Network model using our dataset of the DR images.
- - Prediction [prediction.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/prediction.py): We predict the class of the test DR image. We use an ensemble of classifiers, so we get multpile predictions for the test image. We use the average of the softmax layer values over each class to get the predicted class for an image.
- - Feature attribution [visualization_attribution.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/ 	visualization_attribution.py)
- - Visualization [display_image.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/display_image.py)
- - Uncertainty Estimation [uncertainty.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/uncertainty.py)
+ - Training ([train.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/train.py)): We trained a ResNet-18 Convolutional Neural Network model using our dataset of the DR images.
+ - Prediction ([prediction.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/prediction.py)): We predict the class of the test DR image. We use an ensemble of classifiers, so we get multpile predictions for the test image. We use the average of the softmax layer values over each class to get the predicted class for an image.
+ - Feature attribution ([visualization_attribution.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/visualization_attribution.py)) We attribute the prediction of a neural network network to its input features using two methods - Gradient-weighted Class Activation Mapping (Grad-CAM) and Integrated Gradient method. These methods use the gradients of the target, flowing into the final convolutional layer to produce a coarse localization map highlighting the important regions in the image for predicting the pixels.
+ - Visualization ([display_image.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/display_image.py))
+ - Uncertainty Estimation ([uncertainty.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/uncertainty.py))
  
  ## Usage
  Created a flask application (app.py)  
