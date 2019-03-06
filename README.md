@@ -6,15 +6,6 @@ We apply stochastic batch normalization to obtain uncertainty estimation on a de
 ## Environment
 Python 3.7
 
-## Dependencies
-torch  
-pandas   
-numpy  
-seaborn  
-matplotlib  
-scikit-learn  
-scipy.misc  
-glob  
-PIL  
-argparse
+### Dependencies
+ The dependencies are available in [requirements.txt](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/requirements.txt)
 
