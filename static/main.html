@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DR Prediction</title>
+</head>
+<body>
+
+<form id="upload-file" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <label for="file">Select a file</label>
+        <input id='select' name="file" type="file" onchange="readURL(this);">
+    </fieldset>
+    <fieldset>
+        <button id="upload-file-btn" type="button">Upload</button>
+    </fieldset>
+</form>
+
+<div>
+    <h4>Your selected image</h4>
+    <img id="blah" ></img>
+
+</div>
+
+
+<div>
+    <h4>My processed image</h4>
+    <img id="process_image">
+
+
+    </img>
+    <div class="result" align="center">
+
+
+        <br> Predicted number of bikes in use:
+           <p >{{ result }}</p>
+
+</div>
+</div>
+</body>
+</html>
