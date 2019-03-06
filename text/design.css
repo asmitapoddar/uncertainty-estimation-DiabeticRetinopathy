@@ -1,0 +1,11 @@
+.left{
+    width: 250px;
+    height: 250px;
+    float: left;
+}
+
+//If you don't want margins
+body{
+    margin:0;
+    padding:0;
+}
