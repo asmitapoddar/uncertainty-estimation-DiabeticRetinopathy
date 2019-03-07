@@ -50,29 +50,32 @@ def pil_img(a):
     a = np.uint8(a)
     return Image.fromarray(a)
 
+####CHANGES TO MODEL LOADING HERE
 def load_resnet_stochbn(model_file):
-    model_ft = models.resnet50()
+    model_ft = models.resnet18()
     model_ft.fc = torch.nn.Linear(model_ft.fc.in_features, 5)
 
     model_ft = model_ft.cuda()
-    model_ft = torch.nn.DataParallel(
-        model_ft, device_ids=range(torch.cuda.device_count()))
+    #model_ft = torch.nn.DataParallel(
+    #    model_ft, device_ids=range(torch.cuda.device_count()))
 
     checkpoint = torch.load(model_file)
-    model_ft.load_state_dict(checkpoint['model'].state_dict())
+    #model_ft.load_state_dict(checkpoint['model'].state_dict())
+    model_ft.load_state_dict(checkpoint.state_dict())
     return model_ft
 
 def load_resnet(model_file):
     # discard last layer
-    model_ft = models.resnet50()
+    model_ft = models.resnet18()
     model_ft.fc = torch.nn.Linear(model_ft.fc.in_features, 5)
 
     model_ft = model_ft.cuda()
-    model_ft = torch.nn.DataParallel(
-        model_ft, device_ids=range(torch.cuda.device_count()))
+    #model_ft = torch.nn.DataParallel(
+    #    model_ft, device_ids=range(torch.cuda.device_count()))
 
     checkpoint = torch.load(model_file)
-    model_ft.load_state_dict(checkpoint['model'].state_dict())
+    #model_ft.load_state_dict(checkpoint['model'].state_dict())
+    model_ft.load_state_dict(checkpoint.state_dict())
     return model_ft
 
 def visdom_img(img, title):
@@ -81,7 +84,7 @@ def visdom_img(img, title):
 def create_vis():
     image_folder = os.path.join(os.getcwd(), 'Result')
     ###MODEL FILE CHANGE HERE
-    model_file = 'models/resnet-50_best.t7'
+    model_file = 'models/resnet-18_trained.t7'
     #model_file = 'networks/resnet-18_trained.t7'
     stoch_bn = True
     name = ''
@@ -91,14 +94,16 @@ def create_vis():
     current_device = torch.cuda.current_device()
     print('Running on the GPU:', torch.cuda.get_device_name(current_device))
 
+    #CHANGES TO NN HERE
     if stoch_bn:
         if model_file == '':
-            model_file = '/models/resnet-50_sbn.t7'
-        model = load_resnet_stochbn(model_file).module
+            model_file = '/models/resnet-18_trained.t7'
+        #model = load_resnet_stochbn(model_file).module
+        model = load_resnet_stochbn(model_file)
     else:
         if model_file == '':
-            model_file = '/models/resnet-50_best.t7'
-        model = load_resnet(model_file).module
+            model_file = '/models/resnet-18_trained.t7'
+        model = load_resnet(model_file)
 
     '''
     model_file1 = 'models/resnet-50.t7'
@@ -134,7 +139,7 @@ def create_vis():
         return features
         # return feature_std
 
-    def guided_gradcam(image_path, target_layer='layer4.2'):
+    def guided_gradcam(image_path, target_layer='layer4.1'):   #layer4.2
         image = preprocess_img(image_path)
         regions = []
         features = []
@@ -164,6 +169,7 @@ def create_vis():
         #print('region.shape', region.shape)
         #return feature, region
         np.save('GC.png', output)
+        np.save('GC_features.png', output)
         return(features)
 
     R = np.array([255, 0, 0])
