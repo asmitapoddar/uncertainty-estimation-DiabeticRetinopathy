@@ -2,7 +2,7 @@
 This project aims at disease detection from medical images, specifically, automated screening of Diabetic Retinopathy (DR), using the **PyTorch Framework**.   
 Apart from achieving high accuracy in predicting the class of DR using Convolutional Neural Networks, we estimate the uncertainty of neural networks in making its prediction. The deep learning system should give high confidence predictions when the predictions are likely to be correct and low confidence when the system is unsure.   
 We also generate visual explanation of the deep learning system to convey the pixels in the image that influences its decision. For a visual explanation to enhance trust, it has to be specific and relevant. It should only highlight the parts of image that is most relevant to how human justify its decision.  
-Together, these reveal the deep learning system’s competency and limits to the human, and in turn the human can know when to trust the deep learning system. Finally, we have created an end-to-end application which enables an end-user (such as a clinician) to obtain all the results on a dashboard. 
+Together, these reveal the deep learning system’s competency and limits to the human, and in turn the human can know when to trust the deep learning system. Finally, we have created an end-to-end application which enables an end-user (such as a clinician) to obtain all the results on a dashboard to interpret model predictions. 
 
 ## Environment
 Python 3.7
@@ -27,7 +27,10 @@ Python 3.7
  - Uncertainty Estimation ([uncertainty.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/uncertainty.py)): Uncertainty of the neural network is estimated using measures like standard deviation and entropy of the predictions over multiple runs of the transformed image through the neural network. The effect of uncertain predictions on accuracy of the network is visualized through graphs.
  
  ## Usage
- I have created a Flask application ([app.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/app.py))  
- 
-The deep learning system should give high confidence predictions when the predictions are likely to be correct and low confidence when the system is unsure.
-
+I have created an interactive Flask application ([app.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/app.py)) which runs through the above pipeline to give the results. This is useful for abstracting the process for an end-user like a medical professional to upload an image and get the results.   
+To run:
+- ```python app.py```  
+  Running on http://127.0.0.1:5000/ 
+- Run ```http://127.0.0.1:5000/``` on the browser.  
+- Select an image from your computer and upload.  
+Thus, we automate the whole machine learning and disease detection pipeline, which not only decreases the cost and time required for diagnosis of Diabetic Retinopathy, but also increases trust of humans in the deep learning system.
