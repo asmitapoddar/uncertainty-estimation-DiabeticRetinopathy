@@ -31,6 +31,6 @@ I have created an interactive Flask application ([app.py](https://github.com/asm
 To run:
 - ```python app.py```  
   Running on http://127.0.0.1:5000/ 
-- Run ```http://127.0.0.1:5000/``` on the browser.  
-- Select an image from your computer and upload.  
+- Run http://127.0.0.1:5000/ on the browser.  
+- Select an image from your computer and upload.
 Thus, we automate the whole machine learning and disease detection pipeline, which not only decreases the cost and time required for diagnosis of Diabetic Retinopathy, but also increases trust of humans in the deep learning system.
