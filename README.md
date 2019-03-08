@@ -12,7 +12,7 @@ Python 3.7
  
  ## Dataset
  The dataset used to train the network are Diabetic Retinopathy images from the Singapore national DR screening Program (SiDRP).
- There are 5 classes:
+ There are 5 classes:   
  0 - No DR,   
  1 - Mild,   
  2 - Moderate,   
@@ -23,7 +23,7 @@ Python 3.7
  - Training ([train.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/train.py)): We load the data into PyTorch using ```torch.utils.data.DataLoader``` after composing various transforms and normalizations. We train a Convolutional Neural Network with ResNet-18 architecture using our dataset of the DR images.
  - Prediction ([prediction.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/prediction.py)): We predict the class of the test DR image. We use an ensemble of classifiers, so we get multpile predictions for the test image. We use the average of the softmax layer values over each class to get the predicted class for an image. The predicted logits and probabilities are stored in the file 'res_norotate'.
  - Feature attribution ([visualization_attribution.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/visualization_attribution.py)): We attribute the prediction of a neural network network to its input features using two methods - Gradient-weighted Class Activation Mapping (Grad-CAM) and Integrated Gradient method. These methods use the gradients of the target, flowing into the final convolutional layer to produce a coarse localization map highlighting the important regions in the image for the used by the neural network for its predictions. The gradienst are stored in the .npy format.
- - Visualization ([display_image.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/display_image.py)): The attributions produced in the .npy files are visualized as a jpg image. The blue channel signifies positive attribution while the red channel signifies negative attribution of the pixels.
+ - Visualization ([display_image.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/display_image.py)): The attributions produced in the .npy files are visualized as a .jpg image. The blue channel signifies positive attribution while the red channel signifies negative attribution of the pixels.
  - Uncertainty Estimation ([uncertainty.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/uncertainty.py)): Uncertainty of the neural network is estimated using measures like standard deviation and entropy of the predictions over multiple runs of the transformed image through the neural network. The effect of uncertain predictions on accuracy of the network is visualized through graphs.
  
  ## Usage
