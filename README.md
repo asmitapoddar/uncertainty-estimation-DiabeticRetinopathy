@@ -2,7 +2,7 @@
 This project aims at disease detection from medical images using Computer Vision, specifically, automated screening of Diabetic Retinopathy (DR), using the **PyTorch Framework**. Inspite of the thrust on computer vision for medical applications, it is not widely adapted in real-life. Our aim is to build trust on the deep learning system, and deploy such a system in the following ways:   
 - Apart from achieving high accuracy in predicting the class of DR using Convolutional Neural Networks, we estimate the uncertainty of neural networks in making its prediction. The deep learning system should give high confidence predictions when the predictions are likely to be correct and low confidence when the system is unsure.   
 - We also generate visual explanation of the deep learning system to convey the pixels in the image that influences its decision. For a visual explanation to enhance trust, it has to be specific and relevant. It should only highlight the parts of image that is most relevant to how human justify its decision.  
-- Create an end-to-end application which enables an end-user (such as a clinician) to obtain all the results on a dashboard to interpret model predictions. Deep-learning systems could thus, aid physicians by offering second opinions and flagging concerning areas in images.   
+- Create an end-to-end application which enables an end-user (such as a clinician) to obtain all the results on a dashboard to interpret model predictions. Deep-learning systems could thus, aid physicians by offering second opinions and flagging concerning areas in images.  
 Together, these reveal the deep learning system’s competency and limits to the human, and in turn the human can know when to trust the deep learning system.
 
 ## Environment
