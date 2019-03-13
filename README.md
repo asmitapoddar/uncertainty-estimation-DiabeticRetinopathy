@@ -7,7 +7,11 @@ This project aims at disease detection from medical images using Computer Vision
 Together, these reveal the deep learning system’s competency and limits to the human, and in turn the human can know when to trust the deep learning system.
 
 ## Environment
-Python 3.7
+- Python 3.7  
+- PyTorch >= 1.0.0  
+- CUDA 9.0  
+
+**Note:** It is recommended to use Anaconda distribution of Python.
 
 ### Dependencies
  The dependencies are available in [requirements.txt](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/requirements.txt)
@@ -29,7 +33,12 @@ Python 3.7
  - Uncertainty Estimation ([uncertainty.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/uncertainty.py)): Uncertainty of the neural network is estimated using measures like standard deviation and entropy of the predictions over multiple runs of the transformed image through the neural network. The effect of uncertain predictions on accuracy of the network is visualized through graphs.
  
  ## Usage
-I have created an interactive Flask application ([app.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/app.py)) which runs through the above pipeline to give the results. This is useful for abstracting the process for an end-user like a medical professional to upload an image and get the results.   
+## Preprocessing
+([preprocessing.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/preprocessing.py)) shows the preprocessing done on the input image. The preprocessed results are stored as the two .jpeg images in the folder ```preprocessing_results```.
+## Models  
+([train.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/train.py)) trains the neural network model - ResNet-18, which is store in the folder ```models``` and ```networks```.
+## Application
+I have created an interactive Flask application ([app.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/app.py)) which runs through the above pipeline to give the results. This contains the whole pipeline of the project, such that it can be used by an end-user like a medical professional to upload a Diabetic Retinopathy image and get the required results.   
 To run:
 - ```python app.py```  
   This launches a simple built-in server.
