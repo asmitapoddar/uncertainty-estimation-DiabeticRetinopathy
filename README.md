@@ -33,11 +33,11 @@ Together, these reveal the deep learning system’s competency and limits to the
  - Uncertainty Estimation ([uncertainty.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/uncertainty.py)): Uncertainty of the neural network is estimated using measures like standard deviation and entropy of the predictions over multiple runs of the transformed image through the neural network. The effect of uncertain predictions on accuracy of the network is visualized through graphs.
  
  ## Usage
-## Preprocessing
+### Preprocessing
 ([preprocessing.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/preprocessing.py)) shows the preprocessing done on the input image. The preprocessed results are stored as the two .jpeg images in the folder ```preprocessing_results```.
-## Models  
+### Models  
 ([train.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/train.py)) trains the neural network model - ResNet-18, which is store in the folder ```models``` and ```networks```.
-## Application
+### Application
 I have created an interactive Flask application ([app.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/app.py)) which runs through the above pipeline to give the results. This contains the whole pipeline of the project, such that it can be used by an end-user like a medical professional to upload a Diabetic Retinopathy image and get the required results.   
 To run:
 - ```python app.py```  
