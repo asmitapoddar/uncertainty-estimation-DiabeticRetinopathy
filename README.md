@@ -34,15 +34,15 @@ Together, these reveal the deep learning system’s competency and limits to the
  
  ## Usage
 ### Preprocessing
-([preprocessing.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/preprocessing.py)) shows the preprocessing done on the input image. The preprocessed results are stored as the two .jpeg images in the folder ```preprocessing_results```.
+[preprocessing.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/preprocessing.py) shows the preprocessing done on the input image. The preprocessed results are stored as the two .jpeg images in the folder ```preprocessing_results```.
 ### Models  
-([train.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/train.py)) trains the neural network model - ResNet-18, which is store in the folder ```models``` and ```networks```.
+[train.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/train.py) trains the neural network using the ResNet-18 architecture. The trained model, ```resnet-18_trained.t7``` is stored in the folders ```models``` and ```networks```.
 ### Application
-I have created an interactive Flask application ([app.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/app.py)) which runs through the above pipeline to give the results. This contains the whole pipeline of the project, such that it can be used by an end-user like a medical professional to upload a Diabetic Retinopathy image and get the required results.   
+I have created an interactive Flask application ([app.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/app.py)) which runs through the above workflow to give the results. This contains the whole pipeline of the project, such that it can be used by an end-user like a medical professional to upload a Diabetic Retinopathy image and get the required results.   
 To run:
 - ```python app.py```  
   This launches a simple built-in server.
 - Run local host (http://127.0.0.1:5000/) on the browser.  
 - Select an image from your computer and upload to the application.  
 
-Thus, we automate the whole machine learning and disease detection pipeline, which not only decreases the cost and time required for diagnosis of Diabetic Retinopathy, but also increases trust of humans in the deep learning system.
+Thus, we automate the whole machine learning and disease detection pipeline, which not only decreases the cost and time required for diagnosis of Diabetic Retinopathy by assisting doctors, but also increases trust of humans in the deep learning system.
