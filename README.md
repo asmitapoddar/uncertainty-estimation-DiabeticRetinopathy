@@ -36,7 +36,7 @@ Together, these reveal the deep learning system’s competency and limits to the
 ### Preprocessing
 [preprocessing.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/preprocessing.py) shows the preprocessing done on the input image. The preprocessed results are stored as the two .jpeg images in the folder ```preprocessing_results```.
 ### Models  
-[train.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/train.py) trains the neural network using the ResNet-18 architecture. The trained model, ```resnet-18_trained.t7``` is stored in the folders ```models``` and ```networks```.
+[train.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/train.py) trains the neural network using the ResNet-18 architecture. The trained model, ```resnet-18_trained.t7``` is stored in the folders ```models``` and ```networks```. Though we cannot release the data used for training our neural network or the trained model, the script [train.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/train.py) can be used for training with Kaggle, Messidor data or DR images from other sources.
 ### Application
 I have created an interactive Flask application ([app.py](https://github.com/asmitapoddar/uncertainty-estimation-DR/blob/master/app.py)) which runs through the above workflow to give the results. This contains the whole pipeline of the project, such that it can be used by an end-user like a medical professional to upload a Diabetic Retinopathy image and get the required results.   
 To run:
